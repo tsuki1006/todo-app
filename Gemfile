@@ -57,4 +57,5 @@ group :development do
 end
 
 gem 'active_decorator'
+gem 'dartsass-rails'
 gem 'haml-rails'
