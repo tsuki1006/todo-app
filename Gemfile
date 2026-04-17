@@ -56,4 +56,5 @@ group :development do
   gem 'html2haml'
 end
 
+gem 'active_decorator'
 gem 'haml-rails'
