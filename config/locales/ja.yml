@@ -44,6 +44,7 @@ ja:
     formats:
       default: "%Y/%m/%d"
       long: "%Y年%m月%d日(%a)"
+      long_mda: "%-m月%-d日(%a)"
       long_ym: "%Y年%-m月"
       long_md: "%-m月%-d日"
       short: "%-m/%-d"

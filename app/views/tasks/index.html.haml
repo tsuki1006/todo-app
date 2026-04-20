@@ -6,7 +6,7 @@
         = link_to edit_task_path(task) do
           %li
             %div= task.title
-            %div= task.deadline
+            %div= task.display_deadline
 
     = form_with(model: @task, local: true) do |f|
       %div= f.label :title, '＋'
