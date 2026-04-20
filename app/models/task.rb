@@ -15,13 +15,7 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
   validates :completed, inclusion: { in: [true, false] }
 
-  validate :deadline_not_past, on: :create
   validate :cannot_edit_completed_task, on: :update
-
-  def deadline_not_past
-    return if deadline.blank?
-    errors.add(:deadline, 'は本日以降の日付を選択してください') if deadline < Time.current
-  end
 
   # 完了状態で編集できない
   def cannot_edit_completed_task
