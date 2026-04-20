@@ -1,5 +1,11 @@
 .container
   %h1 TODO
+ 
+  %div 一括切り替え
+  %ul
+    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
+    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
+
   %section.tasks
     %ul.uncompleted_task_list
       - @uncompleted_tasks.each do |task|
