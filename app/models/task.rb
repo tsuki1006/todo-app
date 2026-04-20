@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  completed  :boolean          default(FALSE), not null
 #  content    :text
-#  deadline   :datetime
+#  deadline   :date
 #  title      :string(100)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -20,7 +20,7 @@ class Task < ApplicationRecord
 
   def deadline_not_past
     return if deadline.blank?
-    errors.add(:deadline, 'は本日以降の日付を選択してください') if deadline.to_date < Time.current.to_date
+    errors.add(:deadline, 'は本日以降の日付を選択してください') if deadline < Time.current
   end
 
   # 完了状態で編集できない
