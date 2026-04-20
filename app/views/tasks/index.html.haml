@@ -1,0 +1,14 @@
+.container
+  %h1 TODO
+  %section.tasks
+    %ul.task_list
+      - @tasks.each do |task|
+        = link_to edit_task_path(task) do
+          %li
+            %div= task.title
+            %div= task.display_deadline
+
+    = form_with(model: @task, local: true) do |f|
+      %div= f.label :title, '＋'
+      %div= f.text_field :title, placeholder: 'タスクを追加'
+      %div= f.submit "追加"
