@@ -1,15 +1,16 @@
 .container
   %h1 TODO
   %section.tasks
-    %ul.task_list
-      - @tasks.each do |task|
+    %ul.uncompleted_task_list
+      - @uncompleted_tasks.each do |task|
         %li
-          = form_with(model: task, url: task_completion_path(task), method: 'put', local: true) do |f|
-            %div= f.check_box :completed
-            %div= f.submit '更新'
-          = link_to edit_task_path(task), class: 'task_content' do
-            %div= task.title
-            %div= task.display_deadline
+          = render 'card', task: task
+
+    %div 完了済み
+    %ul.completed_task_list
+      - @completed_tasks.each do |task|
+        %li
+          = render 'card', task: task
 
     = form_with(model: @task, local: true) do |f|
       %div= f.label :title, '＋'

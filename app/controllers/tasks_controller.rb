@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update ]
 
   def index
-    @tasks = Task.all.order(:deadline).order(:created_at)
+    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
+    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
     @task = Task.new
   end
 
