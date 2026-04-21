@@ -23,4 +23,8 @@ class Task < ApplicationRecord
       errors.add(:base, '完了したタスクは編集できません')
     end
   end
+
+  # スコープ
+  scope :completed, -> { where(completed: true) }
+  scope :uncompleted, -> { where(completed: false) }
 end

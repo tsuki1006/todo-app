@@ -1,12 +1,23 @@
 .container
   %h1 TODO
+ 
+  %div 一括切り替え
+  %ul
+    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
+    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
+
   %section.tasks
-    %ul.task_list
-      - @tasks.each do |task|
-        = link_to edit_task_path(task) do
+    = turbo_frame_tag 'tasks-list' do
+      %ul.uncompleted_task_list
+        - @uncompleted_tasks.each do |task|
           %li
-            %div= task.title
-            %div= task.display_deadline
+            = render 'card', task: task
+
+      %div 完了済み
+      %ul.completed_task_list
+        - @completed_tasks.each do |task|
+          %li
+            = render 'card', task: task
 
     = form_with(model: @task, local: true) do |f|
       %div= f.label :title, '＋'
