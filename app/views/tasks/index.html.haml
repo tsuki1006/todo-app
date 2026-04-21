@@ -3,8 +3,8 @@
  
   %div 一括切り替え
   %ul
-    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
-    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
+    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
+    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
 
   %section.tasks
     = turbo_frame_tag 'tasks-list' do
