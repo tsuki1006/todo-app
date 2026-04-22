@@ -5,19 +5,27 @@
   %ul
     %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
     %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
+  
+  %ul
+    %li= link_to 'すべて', root_path
+    %li= link_to '未完了', root_path(type: 'uncompleted')
+    %li= link_to '完了', root_path(type: 'completed')
 
   %section.tasks
     = turbo_frame_tag 'tasks-list' do
-      %ul.uncompleted_task_list
-        - @uncompleted_tasks.each do |task|
-          %li
-            = render 'card', task: task
 
-      %div 完了済み
-      %ul.completed_task_list
-        - @completed_tasks.each do |task|
-          %li
-            = render 'card', task: task
+      - unless @type == 'completed'
+        %ul.uncompleted_task_list
+          - @uncompleted_tasks.each do |task|
+            %li
+              = render 'card', task: task, type: @type
+
+      - unless @type == 'uncompleted'
+        %div 完了済み
+        %ul.completed_task_list
+          - @completed_tasks.each do |task|
+            %li
+              = render 'card', task: task, type: @type
 
     = form_with(model: @task, local: true) do |f|
       %div= f.label :title, '＋'
