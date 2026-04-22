@@ -9,12 +9,14 @@ class TasksController < ApplicationController
   end
 
   def create
+    @type = params[:type] if params[:type].present?
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path, notice: 'タスクを追加しました'
+      redirect_to root_path(type: @type)
     else
+      @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
+      @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
       flash.now[:error] = 'タスクの追加に失敗しました'
-      @tasks = Task.all
       render :index, status: :unprocessable_entity
     end
   end

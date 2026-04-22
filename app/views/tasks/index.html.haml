@@ -30,7 +30,7 @@
             %li
               = render 'card', task: task, type: @type
 
-    = form_with(model: @task, local: true) do |f|
-      %div= f.label :title, '＋'
-      %div= f.text_field :title, placeholder: 'タスクを追加'
-      %div= f.submit "追加"
+      = form_with(model: @task, url: tasks_path(type: @type), method: 'post', local: true) do |f|
+        %div= f.label :title, '＋'
+        %div= f.text_field :title, placeholder: 'タスクを追加'
+        %div= f.submit "追加", class: 'hidden'
