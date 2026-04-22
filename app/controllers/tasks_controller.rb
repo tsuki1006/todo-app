@@ -5,6 +5,7 @@ class TasksController < ApplicationController
     @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
     @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
     @task = Task.new
+    @type = params[:type] if params[:type].present?
   end
 
   def create
