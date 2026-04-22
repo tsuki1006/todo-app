@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root 'tasks#index'
   scope :tasks do
     resource :whole_completion, only: [ :create, :destroy ]
+    resource :completed_all, only: [ :destroy ]
   end
   resources :tasks, only: [ :create, :edit, :update, :destroy ] do
     resource :completion, only: [ :update ]
