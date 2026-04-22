@@ -18,14 +18,14 @@
         %ul.uncompleted_task_list
           - @uncompleted_tasks.each do |task|
             %li
-              = render 'card', task: task
+              = render 'card', task: task, type: @type
 
       - unless @type == 'uncompleted'
         %div 完了済み
         %ul.completed_task_list
           - @completed_tasks.each do |task|
             %li
-              = render 'card', task: task
+              = render 'card', task: task, type: @type
 
     = form_with(model: @task, local: true) do |f|
       %div= f.label :title, '＋'
