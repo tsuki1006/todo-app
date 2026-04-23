@@ -1,15 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update ]
+  before_action :set_filter_type, only: [ :index, :create, :edit, :update ]
 
   def index
     @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
     @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
     @task = Task.new
-    @type = params[:type] if params[:type].present?
   end
 
   def create
-    @type = params[:type] if params[:type].present?
     @task = Task.new(task_params)
     if @task.save
       redirect_to root_path(type: @type)
@@ -34,15 +33,20 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    type = params[:type] if params[:type].present?
     task = Task.find(params[:id])
     task.destroy!
-    redirect_to root_path, notice: '削除しました'
+    redirect_to root_path(type: type), notice: '削除しました'
   end
 
   private
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def set_filter_type
+    @type = params[:type] if params[:type].present?
   end
 
   def task_params
