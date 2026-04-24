@@ -1,0 +1,18 @@
+#tasks_list
+  = turbo_frame_tag 'tasks-list' do
+
+    - unless type == 'completed'
+      %ul.uncompleted_task_list
+        - uncompleted_tasks.each do |task|
+          %li
+            = render 'card', task: task, type: type
+
+    - unless type == 'uncompleted'
+      %div 完了済み
+      - if completed_tasks.present?
+        = link_to 'すべて削除', completed_all_path(type: type), data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' }
+
+      %ul.completed_task_list
+        - completed_tasks.each do |task|
+          %li
+            = render 'card', task: task, type: type

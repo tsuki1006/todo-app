@@ -12,25 +12,9 @@
     %li= link_to '完了', root_path(type: 'completed'), data: { turbo_frame: 'tasks-list' }
 
   %section.tasks
-    = turbo_frame_tag 'tasks-list' do
+    = render 'tasks_list', type: @type, uncompleted_tasks: @uncompleted_tasks, completed_tasks: @completed_tasks
 
-      - unless @type == 'completed'
-        %ul.uncompleted_task_list
-          - @uncompleted_tasks.each do |task|
-            %li
-              = render 'card', task: task, type: @type
-
-      - unless @type == 'uncompleted'
-        %div 完了済み
-        - if @completed_tasks.present?
-          = link_to 'すべて削除', completed_all_path(type: @type), data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' }
-
-        %ul.completed_task_list
-          - @completed_tasks.each do |task|
-            %li
-              = render 'card', task: task, type: @type
-
-      = form_with(model: @task, url: tasks_path(type: @type), method: 'post', local: true) do |f|
-        %div= f.label :title, '＋'
-        %div= f.text_field :title, placeholder: 'タスクを追加'
-        %div= f.submit "追加", class: 'hidden'
+    = form_with(model: @task, url: tasks_path(type: @type), method: 'post', local: true) do |f|
+      %div= f.label :title, '＋'
+      %div= f.text_field :title, placeholder: 'タスクを追加'
+      %div= f.submit "追加", class: 'hidden'
