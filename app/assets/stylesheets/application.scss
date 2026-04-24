@@ -1,1 +1,49 @@
-// Sassy
+@import "bootstrap";
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in 0s forwards;
+}
+
+.modal.-hidden {
+  animation: fadeOut 0.3s ease-in 0s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+
+  99% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}

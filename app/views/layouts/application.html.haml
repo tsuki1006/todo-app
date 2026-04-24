@@ -15,7 +15,9 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    .flash
-      - flash.each do |key, value|
-        %div{class: key}= value
+    #flash
+      = render 'layouts/flash'
+
+    = render 'layouts/modal'
+
     = yield

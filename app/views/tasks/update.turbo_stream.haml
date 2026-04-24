@@ -1,0 +1,7 @@
+= turbo_stream.replace 'task_detail' do 
+  = render 'task_detail', task: @task, type: @type
+
+= turbo_stream.replace 'tasks_list' do
+  = render 'tasks_list', type: @type, uncompleted_tasks: @uncompleted_tasks, completed_tasks: @completed_tasks
+
+= turbo_stream_flash

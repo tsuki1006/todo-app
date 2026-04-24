@@ -57,5 +57,7 @@ group :development do
 end
 
 gem 'active_decorator'
+gem 'bootstrap', '~> 5.3.8'
 gem 'dartsass-rails'
 gem 'haml-rails'
+gem 'jquery-rails'

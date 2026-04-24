@@ -1,20 +1,18 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update ]
+  before_action :set_filter_type
 
   def index
-    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
-    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+    set_tasks_for_list
     @task = Task.new
-    @type = params[:type] if params[:type].present?
   end
 
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to root_path, notice: 'タスクを追加しました'
+      redirect_to root_path(type: @type)
     else
-      flash.now[:error] = 'タスクの追加に失敗しました'
-      @tasks = Task.all
+      set_tasks_for_list
       render :index, status: :unprocessable_entity
     end
   end
@@ -24,9 +22,9 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to edit_task_path(@task), notice: 'タスクを更新しました'
+      set_tasks_for_list
+      flash.now[:notice] = 'タスクを更新しました'
     else
-      flash.now[:error] = 'タスクの更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -34,13 +32,24 @@ class TasksController < ApplicationController
   def destroy
     task = Task.find(params[:id])
     task.destroy!
-    redirect_to root_path, notice: '削除しました'
+
+    set_tasks_for_list
+    flash.now[:notice] = 'タスクを削除しました'
   end
 
   private
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def set_filter_type
+    @type = params[:type] if params[:type].present?
+  end
+
+  def set_tasks_for_list
+    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
+    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
   end
 
   def task_params
