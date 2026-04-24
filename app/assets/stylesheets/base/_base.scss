@@ -1,4 +1,56 @@
 // ベース
+@use 'variables' as var;
+
+html {
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Noto Sans JP", "Arial", sans-serif;
+  font-size: var.$font-base;
+  color: var.$color-t-primary;
+  background-color: #f7f7f7;
+}
+
+main {
+  position: relative;
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+a,
+a * {
+  text-decoration: none;
+  color: var.$color-t-primary;
+}
+
+ul li {
+  list-style: none;
+  padding: 0;
+}
+
 .hidden {
   display: none;
 }
