@@ -29,7 +29,6 @@ class TasksController < ApplicationController
       @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
       flash.now[:notice] = 'タスクを更新しました'
     else
-      flash.now[:error] = 'タスクの更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
