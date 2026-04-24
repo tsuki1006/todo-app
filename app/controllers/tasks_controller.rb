@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update ]
-  before_action :set_filter_type, only: [ :index, :create, :edit, :update ]
+  before_action :set_filter_type
 
   def index
     @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
@@ -34,10 +34,12 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    type = params[:type] if params[:type].present?
     task = Task.find(params[:id])
     task.destroy!
-    redirect_to root_path(type: type), notice: '削除しました'
+
+    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
+    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+    flash.now[:notice] = 'タスクを削除しました'
   end
 
   private

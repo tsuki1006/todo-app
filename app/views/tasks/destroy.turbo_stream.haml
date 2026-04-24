@@ -1,0 +1,7 @@
+= turbo_stream.replace 'modal' do
+  = render 'layouts/modal'
+
+= turbo_stream.replace 'tasks_list' do
+  = render 'tasks_list', type: @type, uncompleted_tasks: @uncompleted_tasks, completed_tasks: @completed_tasks
+
+= turbo_stream_flash
