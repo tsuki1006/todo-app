@@ -1,0 +1,50 @@
+// フラッシュ
+
+.flash {
+  z-index: 2000;
+  position: absolute;
+  top: 1.5rem;
+  right: 0.5rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  visibility: hidden;
+  -webkit-animation: fade-in-out;
+  animation: fade-in-out;
+  animation-duration: 5s;
+}
+
+@-webkit-keyframes fade-in-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
