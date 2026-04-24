@@ -3,18 +3,20 @@
  
   %div 一括切り替え
   %ul
-    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
-    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_frame: 'tasks-list', turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
+    %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_frame: 'tasks', turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }
+    %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_frame: 'tasks', turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }
   
   %ul
-    %li= link_to 'すべて', root_path, data: { turbo_frame: 'tasks-list' }
-    %li= link_to '未完了', root_path(type: 'uncompleted'), data: { turbo_frame: 'tasks-list' }
-    %li= link_to '完了', root_path(type: 'completed'), data: { turbo_frame: 'tasks-list' }
+    %li= link_to 'すべて', root_path, data: { turbo_frame: 'tasks' }
+    %li= link_to '未完了', root_path(type: 'uncompleted'), data: { turbo_frame: 'tasks' }
+    %li= link_to '完了', root_path(type: 'completed'), data: { turbo_frame: 'tasks' }
 
   %section.tasks
-    = render 'tasks_list', type: @type, uncompleted_tasks: @uncompleted_tasks, completed_tasks: @completed_tasks
+    = turbo_frame_tag 'tasks' do
+      = render 'tasks_list', type: @type, uncompleted_tasks: @uncompleted_tasks, completed_tasks: @completed_tasks
 
-    = form_with(model: @task, url: tasks_path(type: @type), method: 'post', local: true) do |f|
-      %div= f.label :title, '＋'
-      %div= f.text_field :title, placeholder: 'タスクを追加'
-      %div= f.submit "追加", class: 'hidden'
+      .new_task
+        = form_with(model: @task, url: tasks_path(type: @type), method: 'post', local: true) do |f|
+          %div= f.label :title, '＋'
+          %div= f.text_field :title, placeholder: 'タスクを追加'
+          %div= f.submit "追加", class: 'hidden'

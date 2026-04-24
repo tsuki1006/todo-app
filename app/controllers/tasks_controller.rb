@@ -15,7 +15,6 @@ class TasksController < ApplicationController
     else
       @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
       @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
-      flash.now[:error] = 'タスクの追加に失敗しました'
       render :index, status: :unprocessable_entity
     end
   end
