@@ -3,8 +3,7 @@ class TasksController < ApplicationController
   before_action :set_filter_type
 
   def index
-    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
-    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+    set_tasks_for_list
     @task = Task.new
   end
 
@@ -13,8 +12,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to root_path(type: @type)
     else
-      @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
-      @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+      set_tasks_for_list
       render :index, status: :unprocessable_entity
     end
   end
@@ -24,8 +22,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
-      @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+      set_tasks_for_list
       flash.now[:notice] = 'タスクを更新しました'
     else
       render :edit, status: :unprocessable_entity
@@ -36,8 +33,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.destroy!
 
-    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
-    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
+    set_tasks_for_list
     flash.now[:notice] = 'タスクを削除しました'
   end
 
@@ -49,6 +45,11 @@ class TasksController < ApplicationController
 
   def set_filter_type
     @type = params[:type] if params[:type].present?
+  end
+
+  def set_tasks_for_list
+    @uncompleted_tasks = Task.uncompleted.order(:deadline).order(:created_at)
+    @completed_tasks = Task.completed.order(updated_at: :desc).order(:created_at)
   end
 
   def task_params
