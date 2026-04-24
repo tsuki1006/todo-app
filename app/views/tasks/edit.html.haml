@@ -7,6 +7,6 @@
           %button.btn-close{ type: 'button', data: { action: 'click->modal#closeModal' } }
 
         .modal-body
-          = render 'task_detail', task: @task
+          = render 'task_detail', task: @task, type: @type
 
           = link_to '削除', task_path(@task, type: @type), data: { turbo_frame: '_top', turbo_method: :delete, turbo_confirm: 'タスクを削除しますか？' }
