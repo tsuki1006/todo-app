@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="modal"
 export default class extends Controller {
 
-  static targets = [ 'backGround', 'rootLink' ]
+  static targets = [ 'backGround' ]
 
   connect() {
   }
@@ -16,8 +16,7 @@ export default class extends Controller {
   モーダル外をクリックしたときモーダルを閉じる
   closeBackground(event) {
     if(event.target === this.backGroundTarget) {
-      this.backGroundTarget.classList.add('-hidden')
-      this.rootLinkTarget.click()
+      this.closeModal()
     }
   }
 }

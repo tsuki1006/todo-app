@@ -4,7 +4,7 @@
 
       .modal-content
         .modal-header
-          = link_to '', root_path(type: @type), data: { turbo_frame: 'tasks-list', modal_target: 'rootLink', action: 'click->modal#closeModal' }, class: 'btn-close'
+          %button.btn-close{ type: 'button', data: { action: 'click->modal#closeModal' } }
 
         .modal-body
           = render 'task_detail', task: @task
