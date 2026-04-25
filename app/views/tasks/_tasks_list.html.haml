@@ -1,16 +1,17 @@
 #tasks_list
   - unless type == 'completed'
-    %ul.uncompleted_task_list
+    %ul.uncompleted_task_list.d-grid.gap-2
       - uncompleted_tasks.each do |task|
         %li
           = render 'card', task: task, type: type
 
   - unless type == 'uncompleted'
-    %div 完了済み
-    - if completed_tasks.present?
-      = link_to 'すべて削除', completed_all_path(type: type), data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' }
+    .completed_task_top
+      %div 完了済み
+      - if completed_tasks.present?
+        = link_to '削除', completed_all_path(type: type), data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' }, class: 'btn btn-outline-secondary'
 
-    %ul.completed_task_list
+    %ul.completed_task_list.d-grid.gap-2
       - completed_tasks.each do |task|
         %li
           = render 'card', task: task, type: type

@@ -1,0 +1,38 @@
+// editページ
+@use '../base/mixins' as mix;
+
+// 編集フォーム
+.form_label {
+  @include mix.form_label;
+}
+
+.input_title {
+  @include mix.form_input;
+  width: 100%;
+}
+
+.input_deadline {
+  @include mix.form_input;
+  max-width: 100%;
+  padding: 0.5rem;
+  font-size: 18px;
+}
+
+.input_memo {
+  @include mix.form_input;
+  min-height: 100px;
+  resize: vertical;
+  width: 100%;
+}
+
+.form_submit {
+  display: block;
+  margin: 0 4rem 0 auto;
+}
+
+// 削除
+.task_delete {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+}

@@ -1,0 +1,66 @@
+// indexページ
+@use '../base/variables' as var;
+@use '../base/mixins' as mix;
+
+// アクション
+.index_action {
+  @include mix.df-sb-c-g;
+  margin-bottom: 1rem;
+}
+
+.filter_list {
+  @include mix.df-s-c-g;
+}
+
+// タスクリスト
+.uncompleted_task_list {
+  margin-bottom: 1.5rem;
+}
+
+.completed_task_top {
+  @include mix.df-s-c-g;
+  margin-bottom: 0.5rem;
+}
+
+// タスクカード
+.task_card {
+  @include mix.df-s-c-g;
+  padding: 0.5rem 1rem;
+  border: var.$border-default;
+  border-radius: 8px;
+
+  &:hover {
+    background: #f5f5f5;
+  }
+}
+
+.form-check-input:checked {
+  background-color: var.$color-primary;
+  border-color: var.$color-primary;
+}
+
+.task_content {
+  flex: 1;
+  @include mix.df-sb-c-g;
+
+  &_deadline {
+    flex: none;
+    color: var.$color-t-thin;
+  }
+}
+
+// 新規作成
+.new_task_form {
+  @include mix.df-s-c-g;
+}
+
+.new_task_input {
+  outline: none;
+  border: none;
+  caret-color: #888;
+  width: stretch;
+
+  &:focus {
+    border: none;
+  }
+}

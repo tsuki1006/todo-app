@@ -5,6 +5,22 @@
   animation: fadeIn 0.3s ease-in 0s forwards;
 }
 
+.modal-content {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  padding: 0 2rem 2rem 2rem;
+}
+
 .modal.-hidden {
   animation: fadeOut 0.3s ease-in 0s forwards;
 }
