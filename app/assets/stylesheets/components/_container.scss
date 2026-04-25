@@ -1,0 +1,21 @@
+// container
+@use '../base/variables' as var;
+
+.container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var.$box-shadow;
+  max-width: 100%;
+}
+
+.tasks_list_container {
+  margin-bottom: 1rem;
+}
+
+.new_task_container {
+  position: sticky;
+  bottom: 25px;
+  padding: 1rem 2rem;
+}

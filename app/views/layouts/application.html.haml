@@ -12,12 +12,17 @@
     %link{:href => "/icon.png", :rel => "icon", :type => "image/png"}/
     %link{:href => "/icon.svg", :rel => "icon", :type => "image/svg+xml"}/
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "https://fonts.googleapis.com", :rel => "preconnect"}/
+    %link{:crossorigin => "", :href => "https://fonts.gstatic.com", :rel => "preconnect"}/
+    %link{:href => "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap", :rel => "stylesheet"}/
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/77fd5ff737.js"}
   %body
-    #flash
-      = render 'layouts/flash'
+    %main
+      #flash
+        = render 'layouts/flash'
 
-    = render 'layouts/modal'
+      = render 'layouts/modal'
 
-    = yield
+      = yield

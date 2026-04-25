@@ -1,0 +1,61 @@
+// mixin
+@use 'variables' as var;
+
+// flex
+@mixin df-c-c-g {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@mixin df-s-c-g {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+@mixin df-sb-c-g {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+@mixin form_label {
+  margin-bottom: 7px;
+  display: block;
+}
+
+@mixin form_input {
+  padding: 0.9rem;
+  border-radius: 8px;
+  border: var.$border-default;
+  transition: all .2s ease;
+  margin-bottom: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: var.$color-primary;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, .1);
+  }
+}
+
+@mixin circular_btn {
+  border-radius: 18px;
+  background: #fff;
+  border: var.$border-default;
+  color: var.$color-t-gray;
+  font-size: var.$font-sm;
+  padding: 5px 1rem;
+}
+
+@mixin delete_icon {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
