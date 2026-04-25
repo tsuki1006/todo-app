@@ -41,3 +41,11 @@
     box-shadow: 0 0 0 3px rgba(102, 126, 234, .1);
   }
 }
+
+@mixin circular_btn {
+  border-radius: 18px;
+  background: #fff;
+  border: var.$border-default;
+  color: var.$color-t-gray;
+  padding: 6px 1rem;
+}
