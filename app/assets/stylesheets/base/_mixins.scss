@@ -47,7 +47,8 @@
   background: #fff;
   border: var.$border-default;
   color: var.$color-t-gray;
-  padding: 6px 1rem;
+  font-size: var.$font-sm;
+  padding: 5px 1rem;
 }
 
 @mixin delete_icon {

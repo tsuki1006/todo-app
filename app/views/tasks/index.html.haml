@@ -1,9 +1,9 @@
 %h1 TODO
 
-.index_action
+.row.index_action
   = render 'filter', type: @type
 
-  .dropdown
+  .col-auto.dropdown
     %button#dropdownMenuButton1.btn.dropdown-toggle.bulk_action_btn{ type: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } }
       一括切り替え
     %ul.dropdown-menu{ aria: { labelledby: "dropdownMenuButton1" } }
