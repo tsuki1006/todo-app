@@ -36,3 +36,8 @@
   right: 2rem;
   bottom: 2rem;
 }
+
+.modal_delete_icon {
+  @include mix.delete_icon;
+  font-size: 1.3rem;
+}

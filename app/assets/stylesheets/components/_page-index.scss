@@ -65,6 +65,11 @@
 .completed_task_top {
   @include mix.df-s-c-g;
   margin-bottom: 0.5rem;
+  gap: 0.6rem;
+}
+
+.delete_icon {
+  @include mix.delete_icon;
 }
 
 // タスクカード

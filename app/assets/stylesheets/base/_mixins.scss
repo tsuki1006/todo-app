@@ -49,3 +49,12 @@
   color: var.$color-t-gray;
   padding: 6px 1rem;
 }
+
+@mixin delete_icon {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
