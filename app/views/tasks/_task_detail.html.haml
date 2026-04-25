@@ -5,9 +5,9 @@
         %li.error_message= message
         
     = form_with(model: task, url: task_path(task, type: type), method: 'put', local: true) do |f|
-      = f.text_field :title, class: 'input_title'
+      = f.text_field :title, disabled: task.completed?, class: 'input_title'
       = f.label :deadline, '期限', class: 'form_label'
-      = f.date_field :deadline, class: 'input_deadline'
+      = f.date_field :deadline, disabled: task.completed?, class: 'input_deadline'
       = f.label :content, 'メモ', class: 'form_label'
-      = f.text_area :content, class: 'input_memo'
-      = f.submit '更新', class: 'btn btn-outline-secondary form_submit'
+      = f.text_area :content, disabled: task.completed?, class: 'input_memo'
+      = f.submit '更新', disabled: task.completed?, class: 'form_submit'
