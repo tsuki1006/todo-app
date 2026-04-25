@@ -1,10 +1,12 @@
 // container
+@use '../base/variables' as var;
+
 .container {
   background: #fff;
   border-radius: 12px;
   padding: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 2px 8px #0000000a;
+  box-shadow: var.$box-shadow;
   max-width: 100%;
 }
 

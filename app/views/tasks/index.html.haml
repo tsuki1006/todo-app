@@ -1,10 +1,7 @@
 %h1 TODO
 
 .index_action
-  %ul.filter_list
-    %li.btn.btn-outline-secondary= link_to 'すべて', root_path, data: { turbo_frame: 'tasks' }
-    %li.btn.btn-outline-secondary= link_to '未完了', root_path(type: 'uncompleted'), data: { turbo_frame: 'tasks' }
-    %li.btn.btn-outline-secondary= link_to '完了', root_path(type: 'completed'), data: { turbo_frame: 'tasks' }
+  = render 'filter', type: @type
 
   .dropdown
     %button#dropdownMenuButton1.btn.btn-secondary.dropdown-toggle{ type: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } }
