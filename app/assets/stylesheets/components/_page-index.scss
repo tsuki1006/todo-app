@@ -122,7 +122,12 @@
 
   &_deadline {
     flex: none;
+    font-size: var.$font-sm;
     color: var.$color-t-thin;
+
+    &.-alert {
+      color: #f45b5b;
+    }
   }
 }
 

@@ -4,4 +4,4 @@
 
   = link_to edit_task_path(task, type: type), data: { turbo_frame: 'task-modal' }, class: 'task_content' do
     %div= task.title
-    %div.task_content_deadline= task.display_deadline
+    %div.task_content_deadline{ class: "#{add_alert_class(task)}" }= task.display_deadline
