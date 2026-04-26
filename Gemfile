@@ -59,6 +59,11 @@ group :development do
   gem 'html2haml'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
 gem 'active_decorator'
 gem 'bootstrap', '~> 5.3.8'
 gem 'dartsass-rails'
