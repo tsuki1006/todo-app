@@ -43,7 +43,10 @@ group :development, :test do
   # gem "rubocop-rails-omakase", require: false
   gem 'rubocop-rails', require: false
 
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
