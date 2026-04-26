@@ -8,8 +8,8 @@
       %button#dropdownMenuButton1.btn.dropdown-toggle.bulk_action_btn{ type: "button", data: { bs_toggle: "dropdown" }, aria: { expanded: "false" } }
         一括切り替え
       %ul.dropdown-menu{ aria: { labelledby: "dropdownMenuButton1" } }
-        %li= link_to 'すべて完了にする', whole_completion_path, data: { turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }, class: 'dropdown-item'
-        %li= link_to 'すべて未完了にする', whole_completion_path, data: { turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }, class: 'dropdown-item'
+        %li= link_to 'すべて完了にする', whole_completion_path(type: @type), data: { turbo_method: :post, turbo_confirm: 'すべてのタスクを完了しますか？' }, class: 'dropdown-item'
+        %li= link_to 'すべて未完了にする', whole_completion_path(type: @type), data: { turbo_method: :delete, turbo_confirm: 'すべてのタスクを未完了にしますか？' }, class: 'dropdown-item'
 
   %section.tasks
     .container.tasks_list_container
