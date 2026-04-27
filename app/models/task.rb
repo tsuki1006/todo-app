@@ -35,7 +35,7 @@ class Task < ApplicationRecord
     target_tasks = status ? uncompleted : completed
     target_tasks.update_all(completed: status)
   end
-  
+
   # 完了済みタスクの一括削除
   def self.completed_all_destroy
     completed.destroy_all
