@@ -138,4 +138,16 @@ RSpec.describe 'Tasks', type: :system do
       end
     end
   end
+
+  describe '完了タスクの一括削除機能' do
+    it '完了タスクの一括削除ができる' do
+      accept_alert do
+        click_link 'completed-all-delete'
+      end
+      expect(page).to have_css('.task_card', count: 3)
+      within(:css, '.completed_task_list') do
+        expect(page).to have_no_css('.task_card')
+      end
+    end
+  end
 end
