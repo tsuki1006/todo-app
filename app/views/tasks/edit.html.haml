@@ -9,5 +9,5 @@
         .modal-body
           = render 'task_detail', task: @task, type: @type
 
-          = link_to task_path(@task, type: @type), data: { turbo_frame: '_top', turbo_method: :delete, turbo_confirm: 'タスクを削除しますか？' }, class: 'task_delete' do
+          = link_to task_path(@task, type: @type), id: 'task-delete', data: { turbo_frame: '_top', turbo_method: :delete, turbo_confirm: 'タスクを削除しますか？' }, class: 'task_delete' do
             %i.fa-regular.fa-trash-can.modal_delete_icon{:style => "color: rgb(161, 161, 161);"}
