@@ -96,4 +96,46 @@ RSpec.describe 'Tasks', type: :system do
       end
     end
   end
+
+  describe '個別完了機能' do
+    it 'チェックボックスのクリックでタスクを完了する' do
+      first(:css, '.form-check-input').click
+      within(:css, '.uncompleted_task_list') do
+        expect(page).to have_css('.task_card', count: 2)
+      end
+      within(:css, '.completed_task_list') do
+        expect(page).to have_css('.task_card', count: 4)
+      end
+    end
+  end
+
+  describe '一括完了機能' do
+    it '一括で完了する' do
+      find('#dropdownMenuButton1').click
+      accept_alert do
+        click_link 'すべて完了にする'
+      end
+
+      within(:css, '.uncompleted_task_list') do
+        expect(page).to have_no_css('.task_card')
+      end
+      within(:css, '.completed_task_list') do
+        expect(page).to have_css('.task_card', count: 6)
+      end
+    end
+
+    it '一括で未完了にする' do
+      find('#dropdownMenuButton1').click
+      accept_alert do
+        click_link 'すべて未完了にする'
+      end
+
+      within(:css, '.uncompleted_task_list') do
+        expect(page).to have_css('.task_card', count: 6)
+      end
+      within(:css, '.completed_task_list') do
+        expect(page).to have_no_css('.task_card')
+      end
+    end
+  end
 end
