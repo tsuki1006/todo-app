@@ -27,4 +27,17 @@ class Task < ApplicationRecord
   # スコープ
   scope :completed, -> { where(completed: true) }
   scope :uncompleted, -> { where(completed: false) }
+
+  # メソッド
+
+  # 完了状態の一括切り替え
+  def self.change_whole_completion_to(status)
+    target_tasks = status ? uncompleted : completed
+    target_tasks.update_all(completed: status)
+  end
+
+  # 完了済みタスクの一括削除
+  def self.completed_all_destroy
+    completed.destroy_all
+  end
 end
