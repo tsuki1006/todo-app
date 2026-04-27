@@ -1,7 +1,6 @@
 class CompletedAllsController < ApplicationController
   def destroy
-    completed_tasks = Task.completed
-    completed_tasks.destroy_all
+    Task.completed_all_destroy
     redirect_to root_path(type: @type)
   end
 end
