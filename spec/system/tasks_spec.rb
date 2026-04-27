@@ -150,4 +150,17 @@ RSpec.describe 'Tasks', type: :system do
       end
     end
   end
+
+  describe 'フィルター表示機能' do
+    it '未完了フィルター表示ができる' do
+      click_link  '未完了'
+      expect(page).to have_no_css('.completed_task_top')
+      expect(page).to have_no_css('.completed_task_list')
+    end
+
+    it '完了フィルター表示ができる' do
+      click_link  '完了'
+      expect(page).to have_no_css('.uncompleted_task_list')
+    end
+  end
 end
