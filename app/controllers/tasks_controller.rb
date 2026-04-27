@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [ :edit, :update ]
-  before_action :set_filter_type
 
   def index
     set_tasks_for_list
@@ -41,10 +40,6 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
-  end
-
-  def set_filter_type
-    @type = params[:type] if params[:type].present?
   end
 
   def set_tasks_for_list
