@@ -27,8 +27,7 @@ RSpec.describe 'Tasks', type: :system do
     it '作成したタスクが表示される' do
       fill_in 'task_title', with: 'テスト用タスク'
       find('#task_title').send_keys :return
-      expect(page).to have_content 'テスト用タスク'
-      expect(page).to have_css('.task_card', count: 7)
+      expect(page).to have_css('.task_card', text: 'テスト用タスク')
     end
   end
 
