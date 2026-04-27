@@ -1,12 +1,7 @@
 class CompletionsController < ApplicationController
   def update
     task = Task.find(params[:task_id])
-    task.update!(task_params)
+    task.update!(completed: params[:task][:completed])
     redirect_to root_path(type: @type)
-  end
-
-  private
-  def task_params
-    params.require(:task).permit(:completed)
   end
 end
