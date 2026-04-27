@@ -9,7 +9,7 @@
     .completed_task_top
       %div 完了済み
       - if completed_tasks.present?
-        = link_to completed_all_path(type: type), data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' } do
+        = link_to completed_all_path(type: type), id: 'completed-all-delete', data: { turbo_method: :delete, turbo_confirm: '完了したタスクをすべて削除しますか？' } do
           %i.fa-regular.fa-trash-can.delete_icon{:style => "color: rgb(161, 161, 161);"}
 
     %ul.completed_task_list.d-grid.gap-2
