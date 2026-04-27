@@ -16,9 +16,9 @@ $ cd todo-app
 # 実行手順
 $ bundle install
 $ bundle exec rails db:create
-$ bundle exec db:migrate
+$ bundle exec rails db:migrate
 $ bundle exec rails db:seed
-$ bundle exec rails s
+$ bin/dev
 
 # サーバー起動後 http://localhost:3000 にアクセスしてください
 ```
